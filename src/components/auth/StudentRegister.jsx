@@ -15,8 +15,6 @@ export const StudentRegister = () => {
           <input type="text" placeholder="Roll Number" required />
           <input type="email" placeholder="Email" required />
           <input type="tel" placeholder="Phone Number" required />
-          <input type="text" placeholder="Department (CSE, ECE...)" required />
-          <input type="text" placeholder="Year (1st, 2nd...)" required />
           <input type="text" placeholder="Room Number" />
           <input type="password" placeholder="Password" required />
           <input type="password" placeholder="Confirm Password" required />
@@ -24,7 +22,7 @@ export const StudentRegister = () => {
           <button type="submit">Register</button>
         </form>
 
-        <p>
+        <p style={{marginTop:'10px'}}>
           Already have account? 
           <Link to='/login'><span> Login</span></Link>
         </p>
