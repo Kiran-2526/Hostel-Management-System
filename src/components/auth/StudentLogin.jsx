@@ -6,6 +6,39 @@ const StudentLogin = () => {
 
   const navigate = useNavigate();
 
+  const [rollNumber, setRollNumber] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+
+    try {
+      const res = await fetch("http://localhost:8080/student/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          rollNumber,
+          password
+        })
+      });
+
+      const data = await res.text(); 
+
+      if (data === "Login Success") {
+        alert("Login Success");
+        navigate("/"); 
+      } else {
+        alert(data);
+      }
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
+    }
+  };
+
   return (
     <div className='stdlogin'>
       <div className="blur-layer"></div>
@@ -13,9 +46,23 @@ const StudentLogin = () => {
       <div className='login-box'>
         <h2>Student Login</h2>
 
-            <form>
-                <input type="text" placeholder="Enter Roll Number" required />
-                <input type="password" placeholder="Enter Password" required />
+        <form onSubmit={handleSubmit}>
+          
+          <input
+            type="text"
+            placeholder="Enter Roll Number"
+            required
+            value={rollNumber}
+            onChange={(e) => setRollNumber(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Enter Password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <button type="submit">Login</button>
 
