@@ -50,6 +50,24 @@ body {
   font-size: 22px;
 }
 
+.gender-group {
+  display: flex;
+  gap: 20px; 
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.gender-group label {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: larger;
+  align-items: center;
+}
+input[type="radio"]{
+  transform: scale(1.5);
+}
+
 /* Inputs */
 .login-box input {
   width: 100%;
@@ -70,7 +88,7 @@ body {
 
   border: none;
   border-radius: 6px;
-  background: #00bcd4;
+  background: hsla(230, 84%, 15%, 0.852);
   color: white;
   font-size: 15px;
   cursor: pointer;
@@ -85,7 +103,7 @@ body {
 }
 
 .login-box span {
-  color: #00bcd4;
+  color: hsla(230, 84%, 15%, 0.852);
   cursor: pointer;
 }
 @media(min-width:414px){
