@@ -88,7 +88,7 @@ input[type="radio"]{
 
   border: none;
   border-radius: 6px;
-  background: #00bcd4;
+  background: hsla(230, 84%, 15%, 0.852);
   color: white;
   font-size: 15px;
   cursor: pointer;
@@ -103,7 +103,7 @@ input[type="radio"]{
 }
 
 .login-box span {
-  color: #00bcd4;
+  color: hsla(230, 84%, 15%, 0.852);
   cursor: pointer;
 }
 @media(min-width:414px){
