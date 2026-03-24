@@ -28,7 +28,7 @@ const StudentLogin = () => {
 
       if (data === "Login Success") {
         alert("Login Success");
-        navigate("/"); 
+        navigate("/StudentDashboard"); 
       } else {
         alert(data);
       }
@@ -53,7 +53,7 @@ const StudentLogin = () => {
             placeholder="Enter Roll Number"
             required
             value={rollNumber}
-            onChange={(e) => setRollNumber(e.target.value)}
+            onChange={(e) => setRollNumber(e.target.value.trim())}
           />
 
           <input
@@ -61,7 +61,7 @@ const StudentLogin = () => {
             placeholder="Enter Password"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value.trim())}
           />
 
           <button type="submit">Login</button>

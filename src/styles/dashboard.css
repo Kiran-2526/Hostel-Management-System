@@ -94,7 +94,7 @@
     background-color: hsla(240, 62%, 71%, 0.1);
     padding: 15px;
 
-    cursor: pointer; /* 🔥 future click */
+    cursor: pointer; 
     transition: 0.3s;
 }
 
