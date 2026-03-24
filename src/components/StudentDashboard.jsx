@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import "../styles/dashboard.css";
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const StudentDashboard = () => {
 
     return (
         <div className="main">
-            <section className="left" onClick={() => {navigate("/login");console.log("clicked")}}>
+            <section className="left">
                 <div className="content">
                     <img src="/neclogo.jpg" alt="Not Found" />
                     <h1>Smart Hostel Management</h1>
@@ -23,7 +23,7 @@ const StudentDashboard = () => {
                     <h1>Select Your Role</h1>
                     <p>Choose how you want to use SHM</p>
                     <div className="roles">
-                        <div className="student">
+                        <div className="student" onClick={()=>navigate("/login")}>
                             <h1 id="headC">Student</h1>
                             <p>Raise petition,vote in pole</p>
                         </div>
