@@ -6,6 +6,14 @@ const StudentLogin = () => {
 
   const navigate = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault(); // 🔥 stop page refresh
+
+    // later you can validate here (API call)
+
+    navigate("/dashboardlayout "); // ✅ go to dashboard
+  };
+
   return (
     <div className='stdlogin'>
         <div className="blur-layer"></div>
@@ -13,7 +21,8 @@ const StudentLogin = () => {
         <div className='login-box'>
             <h2>Student Login</h2>
 
-            <form>
+            {/* ✅ ADD onSubmit */}
+            <form onSubmit={handleLogin}>
                 <input type="text" placeholder="Enter Roll Number" required />
                 <input type="password" placeholder="Enter Password" required />
 
