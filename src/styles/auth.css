@@ -50,6 +50,24 @@ body {
   font-size: 22px;
 }
 
+.gender-group {
+  display: flex;
+  gap: 20px; 
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.gender-group label {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: larger;
+  align-items: center;
+}
+input[type="radio"]{
+  transform: scale(1.5);
+}
+
 /* Inputs */
 .login-box input {
   width: 100%;
