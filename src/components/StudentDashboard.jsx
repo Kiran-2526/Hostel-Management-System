@@ -23,11 +23,11 @@ const StudentDashboard = () => {
                     <h1>Select Your Role</h1>
                     <p>Choose how you want to use SHM</p>
                     <div className="roles">
-                        <div className="student" onClick={()=>navigate("/login")}>
+                        <div className="student" onClick={()=>navigate("/loginstudent")}>
                             <h1 id="headC">Student</h1>
                             <p>Raise petition,vote in pole</p>
                         </div>
-                        <div className="warden">
+                        <div className="warden" onClick={()=>navigate("/loginwarden")}>
                             <h1 id="headO">Warden</h1>
                             <p>Review petition & reports</p>
                         </div>

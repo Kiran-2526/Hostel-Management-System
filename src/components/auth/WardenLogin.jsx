@@ -2,7 +2,7 @@ import React from 'react'
 import "../../styles/auth.css";
 import { Link, useNavigate } from 'react-router-dom';
 
-const StudentLogin = () => {
+const WardenLogin = () => {
 
   const navigate = useNavigate();
 
@@ -11,10 +11,10 @@ const StudentLogin = () => {
         <div className="blur-layer"></div>
 
         <div className='login-box'>
-            <h2>Student Login</h2>
+            <h2>Warden Login</h2>
 
             <form>
-                <input type="text" placeholder="Enter Roll Number" required />
+                <input type="text" placeholder="Enter Warden ID" required />
                 <input type="password" placeholder="Enter Password" required />
 
                 <button type="submit">Login</button>
@@ -29,14 +29,14 @@ const StudentLogin = () => {
             </form>
 
             <Link 
-              to='/register' 
+              to='/registerwarden' 
               style={{marginTop:'5%',display:'inline-block',color:'white'}}
             >
-              New student? <span>Register</span>
+              New warden? <span>Register</span>
             </Link>
         </div>
     </div>
   )
 }
 
-export default StudentLogin;
+export default WardenLogin;
