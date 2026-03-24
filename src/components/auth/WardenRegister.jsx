@@ -45,7 +45,7 @@ const WardenRegister = () => {
 
     if (result === "Registered Successfully") {
       alert("Registered Successfully");
-      navigate("/WardenDashboard");
+      navigate("/loginwarden");
     } else {
       alert(result);
     }
