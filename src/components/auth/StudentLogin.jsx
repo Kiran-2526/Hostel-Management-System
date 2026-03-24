@@ -29,7 +29,7 @@ const StudentLogin = () => {
             </form>
 
             <Link 
-              to='/register' 
+              to='/registerstudent' 
               style={{marginTop:'5%',display:'inline-block',color:'white'}}
             >
               New student? <span>Register</span>
