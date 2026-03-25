@@ -94,7 +94,7 @@
     background-color: hsla(240, 62%, 71%, 0.1);
     padding: 15px;
 
-    cursor: pointer; /* 🔥 future click */
+    cursor: pointer; 
     transition: 0.3s;
 }
 
@@ -106,7 +106,7 @@
 
 
 
-
+/* Student Dashboard */
 .dashboard {
   padding: 30px;
 }
@@ -122,16 +122,18 @@
   gap: 20px;
 }
 
-.card {
-  background: white;
+a{
+  background: hsla(230, 84%, 15%);
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #ddd;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
+  color: white;
 }
 
-.card:hover {
-  background: hsla(230, 84%, 15%, 0.852);
+a:hover {
+  background: rgb(30, 9, 134);
   color: white;
 }

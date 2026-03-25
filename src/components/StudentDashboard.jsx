@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/dashboard.css";
+import { NavLink } from "react-router-dom";
 
 const StudentDashboard = () => {
   return (
@@ -7,25 +8,25 @@ const StudentDashboard = () => {
       <h1>Student Dashboard</h1>
 
       <div className="cards">
-        <div className="card">
+        <NavLink to="/StudentDashboard/Profile" className={({isActive})=>isActive?"active":""}>
           <h3>Profile</h3>
           <p>View your details</p>
-        </div>
+        </NavLink>
 
-        <div className="card">
+        <NavLink to="/StudentDashboard/RaiseComplaint" className={({isActive})=>isActive?"active":""}>
           <h3>Raise Complaint</h3>
           <p>Submit hostel issues</p>
-        </div>
+        </NavLink>
 
-        <div className="card">
+        <NavLink to="/StudentDashborad/MyComplaints" className={({isActive})=>isActive?"active":""}>
           <h3>My Complaints</h3>
           <p>Track status</p>
-        </div>
+        </NavLink>
 
-        <div className="card">
+        <NavLink to="/StudentDashboard/Notices" className={({isActive})=>isActive?"active":""}>
           <h3>Notices</h3>
           <p>Latest updates</p>
-        </div>
+        </NavLink>
       </div>
     </div>
   );

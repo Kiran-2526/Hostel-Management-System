@@ -6,6 +6,10 @@ import WardenRegister from "./components/auth/WardenRegister.jsx";
 import WardenLogin from "./components/auth/WardenLogin.jsx";
 import StudentDashboard from "./components/StudentDashboard.jsx";
 import WardenDashboard from "./components/WardenDashboard.jsx";
+import Notices from "./components/studentcomponents/Notices.jsx";
+import MyComplaints from "./components/studentcomponents/MyComplaints.jsx";
+import Profile from "./components/studentcomponents/Profile.jsx";
+import RaiseComplaint from "./components/studentcomponents/RaiseComplaint.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +21,10 @@ function App() {
         <Route path="/loginwarden" element={<WardenLogin />} />
         <Route path="/StudentDashboard" element={<StudentDashboard />} />
         <Route path="/WardenDashboard" element={<WardenDashboard />} />
+        <Route path="/StudentDashborad/MyComplaints" element={<MyComplaints />}/>
+        <Route path="/StudentDashboard/Notices" element={<Notices />} />
+        <Route path="/StudentDashboard/Profile" element={<Profile />} />
+        <Route path="/StudentDashboard/RaiseComplaint" element={<RaiseComplaint />} />
       </Routes>
     </BrowserRouter>
   );
