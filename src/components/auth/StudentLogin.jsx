@@ -11,7 +11,7 @@ const StudentLogin = () => {
 
     // later you can validate here (API call)
 
-    navigate("/dashboardlayout "); // ✅ go to dashboard
+    navigate("/StudentDashboard"); // ✅ go to dashboard
   };
 
   return (

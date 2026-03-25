@@ -6,6 +6,14 @@ const WardenLogin = () => {
 
   const navigate = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault(); // 🔥 stop refresh
+
+    // later: add API validation
+
+    navigate("/WardenDashboard"); // ✅ go to warden dashboard
+  };
+
   return (
     <div className='stdlogin'>
         <div className="blur-layer"></div>
@@ -13,7 +21,8 @@ const WardenLogin = () => {
         <div className='login-box'>
             <h2>Warden Login</h2>
 
-            <form>
+            {/* ✅ ADD THIS */}
+            <form onSubmit={handleLogin}>
                 <input type="text" placeholder="Enter Warden ID" required />
                 <input type="password" placeholder="Enter Password" required />
 

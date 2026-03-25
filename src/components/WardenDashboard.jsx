@@ -1,31 +1,65 @@
-import React from "react";
-import "../styles/dashboard.css";
+import React, { useState } from "react";
+import "../styles/warden.css";
 
 const WardenDashboard = () => {
+  const [activeTab, setActiveTab] = useState("complaints");
+
   return (
-    <div className="dashboard">
-      <h1>Warden Dashboard</h1>
+    <div className="warden-container">
+      
+      {/* 🔵 SIDEBAR */}
+      <div className="sidebar">
+        <h2>Warden Panel</h2>
 
-      <div className="cards">
-        <div className="card">
-          <h3>All Complaints</h3>
-          <p>View and manage complaints</p>
-        </div>
+        <ul>
+          <li onClick={() => setActiveTab("complaints")}>Complaints</li>
+          <li onClick={() => setActiveTab("students")}>Students</li>
+          <li onClick={() => setActiveTab("notices")}>Notices</li>
+          <li onClick={() => setActiveTab("profile")}>Profile</li>
+        </ul>
+      </div>
 
-        <div className="card">
-          <h3>Pending Requests</h3>
-          <p>Approve or reject</p>
-        </div>
+      {/* 🟢 MAIN CONTENT */}
+      <div className="content">
 
-        <div className="card">
-          <h3>Manage Students</h3>
-          <p>View student details</p>
-        </div>
+        {activeTab === "complaints" && (
+          <div>
+            <h2>All Complaints</h2>
 
-        <div className="card">
-          <h3>Post Notice</h3>
-          <p>Send updates to students</p>
-        </div>
+            <div className="complaint-card">
+              <h4>Room 101 - Water Issue</h4>
+              <p>Water leakage in bathroom</p>
+
+              <button className="approve">Approve</button>
+              <button className="reject">Reject</button>
+              <button className="resolve">Mark Resolved</button>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "students" && (
+          <div>
+            <h2>Students List</h2>
+            <p>List of all students will appear here</p>
+          </div>
+        )}
+
+        {activeTab === "notices" && (
+          <div>
+            <h2>Post Notice</h2>
+
+            <textarea placeholder="Write notice..."></textarea>
+            <button className="post">Post</button>
+          </div>
+        )}
+
+        {activeTab === "profile" && (
+          <div>
+            <h2>Profile</h2>
+            <p>Warden details here</p>
+          </div>
+        )}
+
       </div>
     </div>
   );
