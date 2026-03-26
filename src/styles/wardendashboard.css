@@ -1,0 +1,69 @@
+.warden-dashboard {
+  padding: 30px;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  min-height: 100vh;
+  color: white;
+}
+
+.warden-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.warden-cards a {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  width: 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.warden-cards a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0,255,150,0.4);
+}
+
+.warden-welcome {
+  text-align: center;
+}
+
+.warden-quick-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.warden-q-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 180px;
+}
+
+.warden-preview {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: 70%;
+}
+
+.warden-preview ul {
+  margin-top: 10px;
+}
+
+.warden-preview li {
+  margin-bottom: 8px;
+}
+
+.warden-preview a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #22c55e;
+}

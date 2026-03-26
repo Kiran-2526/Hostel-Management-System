@@ -1,54 +1,105 @@
-import React, { useState } from "react";
-import "../styles/warden.css"; // separate file
+import React, { useEffect, useState } from "react";
+import "../styles/wardendashboard.css";
+import { NavLink } from "react-router-dom";
 
 const WardenDashboard = () => {
-  const [activeTab, setActiveTab] = useState("complaints");
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const getWarden = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/warden/profile");
+        const result = await res.json();
+        setData(result);
+      } catch (error) {
+        console.log("Error fetching warden");
+      }
+    };
+
+    getWarden();
+  }, []);
 
   return (
-    <div className="warden-container">
+    <div className="warden-dashboard">
 
-      {/* Sidebar */}
-      <div className="warden-sidebar">
-        <h2>Warden Panel</h2>
+      <h1>Warden Dashboard</h1>
 
-        <ul>
-          <li onClick={() => setActiveTab("complaints")}>Complaints</li>
-          <li onClick={() => setActiveTab("students")}>Students</li>
-          <li onClick={() => setActiveTab("notices")}>Notices</li>
-        </ul>
-      </div>
+      {/* TOP CARDS */}
+      <div className="warden-cards">
 
-      {/* Main Content */}
-      <div className="warden-content">
+        <NavLink to="/WardenDashboard/Students">
+          <h3>Students</h3>
+          <p>View all students</p>
+        </NavLink>
 
-        {activeTab === "complaints" && (
-          <div>
-            <h2>All Complaints</h2>
+        <NavLink to="/WardenDashboard/Complaints">
+          <h3>Complaints</h3>
+          <p>Manage complaints</p>
+        </NavLink>
 
-            <div className="warden-card">
-              <h4>Room 101 - Water Issue</h4>
-              <p>Leakage problem</p>
+        <NavLink to="/StudentDashboard/Notices">
+          <h3>Notices</h3>
+          <p>Post updates</p>
+        </NavLink>
 
-              <button className="warden-approve">Approve</button>
-              <button className="warden-reject">Reject</button>
-              <button className="warden-resolve">Resolved</button>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "students" && (
-          <h2>Students List</h2>
-        )}
-
-        {activeTab === "notices" && (
-          <div>
-            <h2>Post Notice</h2>
-            <textarea placeholder="Write notice..."></textarea>
-            <button className="warden-post">Post</button>
-          </div>
-        )}
+        <NavLink to="/WardenDashboard/Reports">
+          <h3>Reports</h3>
+          <p>View analytics</p>
+        </NavLink>
 
       </div>
+
+      {/* WELCOME */}
+      <div className="warden-welcome">
+
+        <h2>Welcome, {data.fullName} 👋</h2>
+        <p>Manage hostel efficiently</p>
+
+        {/* QUICK CARDS */}
+        <div className="warden-quick-cards">
+
+          <div className="warden-q-card">
+            <h4>Total Students</h4>
+            <p>120</p>
+          </div>
+
+          <div className="warden-q-card">
+            <h4>Pending Complaints</h4>
+            <p>5</p>
+          </div>
+
+          <div className="warden-q-card">
+            <h4>Resolved Today</h4>
+            <p>3</p>
+          </div>
+
+        </div>
+
+        {/* NOTICES */}
+        <div className="warden-preview">
+          <h3>Recent Notices</h3>
+          <ul>
+            <li>Inspection tomorrow</li>
+            <li>Mess timing updated</li>
+          </ul>
+
+          <NavLink to="/WardenDashboard/Notices">View All →</NavLink>
+        </div>
+
+        {/* COMPLAINTS */}
+        <div className="warden-preview">
+          <h3>Recent Complaints</h3>
+          <ul>
+            <li>Water issue - Pending</li>
+            <li>Fan repair - Resolved</li>
+          </ul>
+
+          <NavLink to="/WardenDashboard/Complaints">View All →</NavLink>
+        </div>
+
+      </div>
+
     </div>
   );
 };
