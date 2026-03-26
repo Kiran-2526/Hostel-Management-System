@@ -26,7 +26,7 @@ const StudentLogin = () => {
       const data = await res.text();
 
       if (data === "Login Success") {
-        alert("Login Success");
+        // alert("Login Success");
 
         localStorage.setItem("rollNumber", rollNumber);
         console.log("Stored:", localStorage.getItem("rollNumber"));

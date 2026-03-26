@@ -26,7 +26,7 @@ const WardenLogin = () => {
       const data = await res.text();
 
       if (data === "Login Success") {
-        alert("Warden Login Success");
+        // alert("Warden Login Success");
         navigate("/WardenDashboard");
       } else {
         alert(data);
