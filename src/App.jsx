@@ -21,7 +21,7 @@ function App() {
         <Route path="/loginwarden" element={<WardenLogin />} />
         <Route path="/StudentDashboard" element={<StudentDashboard />} />
         <Route path="/WardenDashboard" element={<WardenDashboard />} />
-        <Route path="/StudentDashborad/MyComplaints" element={<MyComplaints />}/>
+        <Route path="/StudentDashboard/MyComplaints" element={<MyComplaints />}/>
         <Route path="/StudentDashboard/Notices" element={<Notices />} />
         <Route path="/StudentDashboard/Profile" element={<Profile />} />
         <Route path="/StudentDashboard/RaiseComplaint" element={<RaiseComplaint />} />

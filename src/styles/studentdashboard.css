@@ -1,0 +1,138 @@
+/* BODY BACKGROUND */
+body {
+    background: #0f172a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* DASHBOARD */
+.student-dashboard {
+    padding: 20px;
+    text-align: center;
+}
+
+/* TITLE */
+.student-dashboard h1 {
+    color: #ffffff;
+}
+
+/* TOP CARDS */
+.student-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.student-cards a {
+    background: #1e293b;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    width: 220px;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.student-cards a:hover {
+    transform: scale(1.05);
+    background: #334155;
+    box-shadow: 0 0 15px rgba(34,197,94,0.5);
+}
+
+/* WELCOME SECTION */
+.WelcomeScreen {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.WelcomeScreen h2 {
+    color: #ffffff;
+}
+
+.WelcomeScreen p {
+    color: #94a3b8;
+}
+
+/* QUICK CARDS */
+.quick-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.q-card {
+    background: #1e293b;
+    padding: 15px;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    color: white;
+    transition: 0.3s;
+}
+
+.q-card:hover {
+    transform: translateY(-5px);
+}
+
+.q-card h4 {
+    margin-bottom: 5px;
+    color: white;
+}
+.q-card p{
+    color: white;
+}
+
+/* PREVIEW SECTIONS */
+.preview-section {
+    background: #1e293b;
+    margin: 20px auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-align: left;
+    color: white;
+}
+
+.preview-section h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.preview-section ul {
+    padding-left: 20px;
+}
+
+.preview-section li {
+    margin-bottom: 8px;
+    color: #cbd5f5;
+}
+
+/* VIEW ALL LINK */
+.preview-section a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #22c55e;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.preview-section a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .preview-section {
+        width: 90%;
+    }
+
+    .cards a {
+        width: 90%;
+    }
+}

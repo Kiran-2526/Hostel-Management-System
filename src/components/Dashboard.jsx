@@ -7,8 +7,8 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="main">
-            <section className="left">
+        <div className="main-dashboard">
+            <section className="left-panel">
                 <div className="content">
                     <img src="/neclogo.jpg" alt="Not Found" />
                     <h1>Smart Hostel Management</h1>
@@ -18,7 +18,7 @@ const Dashboard = () => {
                     <h3>✔ Easy communication with warden</h3>
                 </div>
             </section>
-            <section className="right">
+            <section className="right-panel">
                 <div className="role">
                     <h1>Select Your Role</h1>
                     <p>Choose how you want to use SHM</p>

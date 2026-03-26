@@ -1,0 +1,20 @@
+/* PROFILE */
+.profile-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-card {
+  margin: 20px auto;
+  padding: 20px;
+  width: 350px;
+  background: #1e293b;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.profile-card p {
+  margin: 10px 0;
+}

@@ -5,11 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 const StudentLogin = () => {
   const navigate = useNavigate();
 
-  // ✅ hooks must be here (top level)
   const [rollNumber, setRollNumber] = useState("");
   const [password, setPassword] = useState("");
 
-  // ✅ single submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,7 +27,11 @@ const StudentLogin = () => {
 
       if (data === "Login Success") {
         alert("Login Success");
-        navigate("/StudentDashboard");
+
+        localStorage.setItem("rollNumber", rollNumber);
+        console.log("Stored:", localStorage.getItem("rollNumber"));
+        
+        navigate("/StudentDashboard",{state:{rollNumber:rollNumber}});
       } else {
         alert(data);
       }
