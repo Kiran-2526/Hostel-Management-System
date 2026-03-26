@@ -1,47 +1,46 @@
+/* Container */
 .warden-container {
   display: flex;
   height: 100vh;
 }
 
-/* 🔵 Sidebar */
-.sidebar {
+/* Sidebar */
+.warden-sidebar {
   width: 220px;
-  background: hsla(230, 84%, 15%, 0.9);
+  background: #1a237e;
   color: white;
   padding: 20px;
 }
 
-.sidebar h2 {
+.warden-sidebar h2 {
   margin-bottom: 20px;
 }
 
-.sidebar ul {
+.warden-sidebar ul {
   list-style: none;
   padding: 0;
 }
 
-.sidebar li {
+.warden-sidebar li {
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.sidebar li:hover {
+.warden-sidebar li:hover {
   background: white;
   color: black;
 }
 
-/* 🟢 Content */
-.content {
+/* Content */
+.warden-content {
   flex: 1;
-  padding: 20px;
+  padding: 25px;
   background: #f5f5f5;
-  color: black;
 }
 
-
-/* Complaint Card */
-.complaint-card {
+/* Card */
+.warden-card {
   background: white;
   padding: 15px;
   border-radius: 10px;
@@ -49,38 +48,36 @@
 }
 
 /* Buttons */
-button {
-  margin-right: 10px;
-  margin-top: 10px;
-  padding: 8px 12px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.approve {
+.warden-approve {
   background: green;
   color: white;
+  margin-right: 10px;
 }
 
-.reject {
+.warden-reject {
   background: red;
   color: white;
+  margin-right: 10px;
 }
 
-.resolve {
+.warden-resolve {
   background: blue;
   color: white;
 }
 
-.post {
-  background: hsla(230, 84%, 15%, 0.852);
-  color: white;
-}
-
-textarea {
+/* Notice */
+.warden-content textarea {
   width: 100%;
   height: 100px;
   margin-top: 10px;
   padding: 10px;
+}
+
+.warden-post {
+  margin-top: 10px;
+  background: #1a237e;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
 }

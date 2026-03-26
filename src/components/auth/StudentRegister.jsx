@@ -13,7 +13,7 @@ const StudentRegister = () => {
     roomNumber: "",
     year: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -21,28 +21,28 @@ const StudentRegister = () => {
 
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault(); 
-  if (formData.password !== formData.confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-  const { confirmPassword, ...sendData } = formData;
+    const { confirmPassword, ...sendData } = formData;
 
-  const res = await fetch("http://localhost:8080/student/register", {
+    const res = await fetch("http://localhost:8080/student/register", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(sendData)
+      body: JSON.stringify(sendData),
     });
 
-  const result = await res.text(); 
+    const result = await res.text();
 
     if (result === "Registered Successfully") {
       alert("Registration Successful");
@@ -76,7 +76,8 @@ const handleSubmit = async (e) => {
                 name="gender"
                 value="Male"
                 onChange={handleChange}
-              /> Male
+              />{" "}
+              Male
             </label>
 
             <label>
@@ -85,7 +86,8 @@ const handleSubmit = async (e) => {
                 name="gender"
                 value="Female"
                 onChange={handleChange}
-              /> Female
+              />{" "}
+              Female
             </label>
           </div>
 
@@ -161,12 +163,9 @@ const handleSubmit = async (e) => {
           </button>
         </form>
 
-        <p style={{ marginTop: "10px" }}>
-          Already have account?
-          <Link to="/loginstudent">
-            <span> Login</span>
-          </Link>
-        </p>
+        <Link to="/loginstudent" className="login-btn-bottom">
+          Already have account? Login
+        </Link>
       </div>
     </div>
   );

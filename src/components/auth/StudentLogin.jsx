@@ -1,44 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import "../../styles/auth.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 const StudentLogin = () => {
-
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // 🔥 stop page refresh
-
-    // later you can validate here (API call)
-
-    navigate("/StudentDashboard"); // ✅ go to dashboard
+  // ✅ hooks must be here (top level)
   const [rollNumber, setRollNumber] = useState("");
   const [password, setPassword] = useState("");
 
+  // ✅ single submit handler
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     try {
       const res = await fetch("http://localhost:8080/student/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           rollNumber,
-          password
-        })
+          password,
+        }),
       });
 
-      const data = await res.text(); 
+      const data = await res.text();
 
       if (data === "Login Success") {
         alert("Login Success");
-        navigate("/StudentDashboard"); 
+        navigate("/StudentDashboard");
       } else {
         alert(data);
       }
-
     } catch (error) {
       console.error("Error:", error);
       alert("Something went wrong");
@@ -46,20 +40,19 @@ const StudentLogin = () => {
   };
 
   return (
-    <div className='stdlogin'>
+    <div className="stdlogin">
       <div className="blur-layer"></div>
 
-      <div className='login-box'>
+      <div className="login-box">
         <h2>Student Login</h2>
 
         <form onSubmit={handleSubmit}>
-          
           <input
             type="text"
             placeholder="Enter Roll Number"
             required
             value={rollNumber}
-            onChange={(e) => setRollNumber(e.target.value.trim())}
+            onChange={(e) => setRollNumber(e.target.value)}
           />
 
           <input
@@ -67,14 +60,14 @@ const StudentLogin = () => {
             placeholder="Enter Password"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value.trim())}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button type="submit">Login</button>
 
           <button
             type="button"
-            style={{ marginLeft: '4%' }}
+            style={{ marginLeft: "4%" }}
             onClick={() => navigate("/")}
           >
             Back
@@ -82,14 +75,14 @@ const StudentLogin = () => {
         </form>
 
         <Link
-          to='/registerstudent'
-          style={{ marginTop: '5%', display: 'inline-block', color: 'white' }}
+          to="/registerstudent"
+          style={{ marginTop: "5%", display: "inline-block", color: "white" }}
         >
           New student? <span>Register</span>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default StudentLogin;
