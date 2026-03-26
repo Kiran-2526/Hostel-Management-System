@@ -67,3 +67,101 @@
   margin-top: 10px;
   color: #22c55e;
 }
+
+.warden-students-container {
+  padding: 20px;
+  color: white;
+}
+
+/* Search */
+.warden-search {
+  margin: 15px 0;
+  padding: 10px;
+  width: 280px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* Table */
+.warden-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Header */
+.warden-table th {
+  background: #0f172a;
+  padding: 12px;
+  text-align: left;
+}
+
+/* Rows */
+.warden-table td {
+  padding: 12px;
+  border-top: 1px solid #334155;
+}
+
+/* Hover */
+.warden-table tr:hover {
+  background: #334155;
+}
+
+/* Delete button */
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+.back-btn {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 8px 15px;
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #1e293b;
+}
+
+.search-filter-container {
+  display: flex;
+  align-items: center; /* 🔥 aligns properly */
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.warden-search {
+  padding: 8px 10px;
+  height: 38px;
+  width: 240px;
+  border-radius: 6px;
+  border: none;
+}
+
+.warden-filter {
+  padding: 8px 10px;
+  height: 38px;
+  border-radius: 6px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  font-size: 14px;
+  min-width: 140px;
+  cursor: pointer;
+}
