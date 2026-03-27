@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./../../styles/profile.css";
-
+import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [data, setData] = useState({});
   const [edit, setEdit] = useState(false);
-
+  const navigate = useNavigate();
   const roll = localStorage.getItem("rollNumber");
 
   // Fetch profile
@@ -15,7 +15,7 @@ const Profile = () => {
         const result = await res.json();
         setData(result);
       } catch (error) {
-        alert("Failed to load profile");
+        alert("Failed to load profile",error);
       }
     };
 
@@ -57,7 +57,7 @@ const Profile = () => {
 
       <button 
         className="profile-back-btn"
-        onClick={() => navigate("/WardenDashboard")}
+        onClick={() => navigate("/StudentDashboard")}
       >
         ← Back
       </button>

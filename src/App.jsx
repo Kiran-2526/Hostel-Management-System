@@ -11,28 +11,112 @@ import MyComplaints from "./components/studentcomponents/MyComplaints.jsx";
 import Profile from "./components/studentcomponents/Profile.jsx";
 import RaiseComplaint from "./components/studentcomponents/RaiseComplaint.jsx";
 import Complaints from "./components/wardencomponents/Complaints.jsx";
-// import Notices from "./components/wardencomponents/Notices.jsx";
+import WardenNotices from "./components/wardencomponents/WardenNotices.jsx";
 import Reports from "./components/wardencomponents/Reports.jsx";
 import Students from "./components/wardencomponents/Students.jsx";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />}/>
+        {/* Public Routes */}
+        <Route path="/" element={<Dashboard />} />
         <Route path="/loginstudent" element={<StudentLogin />} />
         <Route path="/registerstudent" element={<StudentRegister />} />
         <Route path="/registerwarden" element={<WardenRegister />} />
         <Route path="/loginwarden" element={<WardenLogin />} />
-        <Route path="/StudentDashboard" element={<StudentDashboard />} />
-        <Route path="/WardenDashboard" element={<WardenDashboard />} />
-        <Route path="/StudentDashboard/MyComplaints" element={<MyComplaints />}/>
-        <Route path="/StudentDashboard/Notices" element={<Notices />} />
-        <Route path="/StudentDashboard/Profile" element={<Profile />} />
-        <Route path="/StudentDashboard/RaiseComplaint" element={<RaiseComplaint />} />
-        <Route path="/WardenDashboard/Complaints" element={<Complaints />} />
-        {/* <Route path="/WardenDashboard/Notices" element={<Notices />} /> */}
-        <Route path="/WardenDashboard/Reports" element={<Reports />} />
-        <Route path="/WardenDashboard/Students" element={<Students />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/StudentDashboard"
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/WardenDashboard"
+          element={
+            <ProtectedRoute>
+              <WardenDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/StudentDashboard/MyComplaints"
+          element={
+            <ProtectedRoute>
+              <MyComplaints />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/StudentDashboard/Notices"
+          element={
+            <ProtectedRoute>
+              <Notices />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/StudentDashboard/Profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/StudentDashboard/RaiseComplaint"
+          element={
+            <ProtectedRoute>
+              <RaiseComplaint />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/WardenDashboard/Complaints"
+          element={
+            <ProtectedRoute>
+              <Complaints />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/WardenDashboard/Notices"
+          element={
+            <ProtectedRoute>
+              <WardenNotices />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/WardenDashboard/Reports"
+          element={
+            <ProtectedRoute>
+              <Reports />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/WardenDashboard/Students"
+          element={
+            <ProtectedRoute>
+              <Students />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
