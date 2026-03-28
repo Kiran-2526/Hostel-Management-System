@@ -114,3 +114,9 @@
 .cancel-btn:active {
   transform: scale(0.9);
 }
+
+@media (max-width: 600px){
+  .profile-card{
+    width: 200px;
+  }
+}

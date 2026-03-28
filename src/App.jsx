@@ -9,7 +9,6 @@ import WardenDashboard from "./components/WardenDashboard.jsx";
 import Notices from "./components/studentcomponents/Notices.jsx";
 import MyComplaints from "./components/studentcomponents/MyComplaints.jsx";
 import Profile from "./components/studentcomponents/Profile.jsx";
-import RaiseComplaint from "./components/studentcomponents/RaiseComplaint.jsx";
 import Complaints from "./components/wardencomponents/Complaints.jsx";
 import WardenNotices from "./components/wardencomponents/WardenNotices.jsx";
 import WardenProfile from "./components/wardencomponents/WardenProfile.jsx";
@@ -69,15 +68,6 @@ function App() {
           element={
             <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/StudentDashboard/RaiseComplaint"
-          element={
-            <ProtectedRoute>
-              <RaiseComplaint />
             </ProtectedRoute>
           }
         />

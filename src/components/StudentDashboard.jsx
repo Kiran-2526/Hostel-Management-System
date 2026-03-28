@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/studentdashboard.css";
 import { Navigate, NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Complaints from './wardencomponents/Complaints';
 
 const StudentDashboard = () => {
   const [data, setData] = useState({});
@@ -63,14 +64,9 @@ const StudentDashboard = () => {
           <p>Latest updates</p>
         </NavLink>
 
-        <NavLink to="/StudentDashboard/RaiseComplaint">
-          <h3>Raise Complaint</h3>
-          <p>Submit hostel issues</p>
-        </NavLink>
-
         <NavLink to="/StudentDashboard/MyComplaints">
-          <h3>My Complaints</h3>
-          <p>Track status</p>
+          <h3>Complaints</h3>
+          <p>Post / Check Complaints</p>
         </NavLink>
       </div>
 

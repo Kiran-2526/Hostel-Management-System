@@ -14,6 +14,8 @@ const Profile = () => {
         const res = await fetch(`http://localhost:8080/student/profile/${roll}`);
         const result = await res.json();
         setData(result);
+        console.log(result);
+        localStorage.setItem("roomNumber",result.roomNumber);
       } catch (error) {
         alert("Failed to load profile",error);
       }

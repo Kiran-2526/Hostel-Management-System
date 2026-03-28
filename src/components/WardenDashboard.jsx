@@ -13,7 +13,7 @@ const WardenDashboard = () => {
   const wardenId = localStorage.getItem("wardenId");
 
   const handleLogout = () => {
-    localStorage.clear(); // 🔥 important
+    localStorage.clear(); 
     window.location.href = "/";
   };
 
