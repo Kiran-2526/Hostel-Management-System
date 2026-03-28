@@ -12,7 +12,7 @@ import Profile from "./components/studentcomponents/Profile.jsx";
 import RaiseComplaint from "./components/studentcomponents/RaiseComplaint.jsx";
 import Complaints from "./components/wardencomponents/Complaints.jsx";
 import WardenNotices from "./components/wardencomponents/WardenNotices.jsx";
-import Reports from "./components/wardencomponents/Reports.jsx";
+import WardenProfile from "./components/wardencomponents/WardenProfile.jsx";
 import Students from "./components/wardencomponents/Students.jsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -101,10 +101,10 @@ function App() {
         />
 
         <Route
-          path="/WardenDashboard/Reports"
+          path="/WardenDashboard/WardenProfile"
           element={
             <ProtectedRoute>
-              <Reports />
+              <WardenProfile />
             </ProtectedRoute>
           }
         />

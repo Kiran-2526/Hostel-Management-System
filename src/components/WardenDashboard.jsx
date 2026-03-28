@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../styles/wardendashboard.css";
-import { Navigate, NavLink } from "react-router-dom";
+import { Navigate, NavLink, useLocation } from "react-router-dom";
 
 const WardenDashboard = () => {
+  const [data, setData] = useState({});
+  const location = useLocation();
+
+  const [studentCount, setStudentCount] = useState(0);
+
   const [notices, setNotices] = useState([]);
 
-   const handleLogout = () => {
-    console.log("Logout clicked");
+  const wardenId = localStorage.getItem("wardenId");
 
-    // ✅ clear both
-    localStorage.removeItem("rollNumber");
-    localStorage.removeItem("wardenId");
-
-    // ✅ force redirect
+  const handleLogout = () => {
+    localStorage.clear(); // 🔥 important
     window.location.href = "/";
   };
 
@@ -26,13 +27,16 @@ const WardenDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  const [data, setData] = useState({});
-
   useEffect(() => {
+    if (!wardenId) return;
+
     const getWarden = async () => {
       try {
-        const res = await fetch("http://localhost:8080/warden/profile");
+        const res = await fetch(
+          `http://localhost:8080/warden/profile/${wardenId}`,
+        );
         const result = await res.json();
+        console.log(result);
         setData(result);
       } catch (error) {
         console.log("Error fetching warden", error);
@@ -40,18 +44,30 @@ const WardenDashboard = () => {
     };
 
     getWarden();
+  }, [wardenId]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/student/count")
+      .then((res) => res.json())
+      .then((data) => setStudentCount(data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
     <div className="warden-dashboard">
       <h1>Warden Dashboard</h1>
 
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-        
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+
       {/* TOP CARDS */}
       <div className="warden-cards">
+        <NavLink to="/WardenDashboard/WardenProfile">
+          <h3>Profile</h3>
+          <p>{data.fullName}'s Profile</p>
+        </NavLink>
+
         <NavLink to="/WardenDashboard/Students">
           <h3>Students</h3>
           <p>View all students</p>
@@ -66,12 +82,6 @@ const WardenDashboard = () => {
           <h3>Complaints</h3>
           <p>Manage complaints</p>
         </NavLink>
-
-        <NavLink to="/WardenDashboard/Reports">
-          <h3>Reports</h3>
-          <p>View analytics</p>
-        </NavLink>
-
       </div>
 
       {/* WELCOME */}
@@ -83,7 +93,7 @@ const WardenDashboard = () => {
         <div className="warden-quick-cards">
           <div className="warden-q-card">
             <h4>Total Students</h4>
-            <p>120</p>
+            <p>{studentCount}</p>
           </div>
 
           <div className="warden-q-card">

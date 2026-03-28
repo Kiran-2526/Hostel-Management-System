@@ -10,13 +10,7 @@ const StudentDashboard = () => {
   const [notices, setNotices] = useState([]);
 
   const handleLogout = () => {
-    console.log("Logout clicked");
-
-    // ✅ clear both
-    localStorage.removeItem("rollNumber");
-    localStorage.removeItem("wardenId");
-
-    // ✅ force redirect
+    localStorage.clear(); // 🔥 clear everything
     window.location.href = "/";
   };
   useEffect(() => {
@@ -29,8 +23,11 @@ const StudentDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  const roll = location.state?.rollNumber;
+  const roll = localStorage.getItem("rollNumber");
+
   useEffect(() => {
+    if (!roll) return;
+
     const getProfile = async () => {
       try {
         const res = await fetch(
@@ -43,8 +40,10 @@ const StudentDashboard = () => {
         alert("Student Not Found", error);
       }
     };
+
     getProfile();
   }, [roll]);
+
   return (
     <div className="student-dashboard">
       <h1>Student Dashboard</h1>

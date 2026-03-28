@@ -49,3 +49,68 @@
 .profile-back-btn:hover {
   background: #1e293b;
 }
+
+/* FORM INPUTS */
+.profile-card input,
+.profile-card select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background-color: #0f172a;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.profile-card input:focus,
+.profile-card select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 5px #38bdf8;
+}
+
+/* BUTTON CONTAINER */
+.profile-card .button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #16a34a;
+}
+
+/* CANCEL BUTTON */
+.cancel-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background-color: #dc2626;
+}
+
+/* BUTTON CLICK EFFECT */
+.save-btn:active,
+.cancel-btn:active {
+  transform: scale(0.9);
+}

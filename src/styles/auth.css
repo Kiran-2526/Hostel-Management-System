@@ -26,22 +26,25 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  backdrop-filter: blur(5px);
-  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(7px);
+  background: rgba(0, 0, 0, 0.75); /* slightly darker */
 }
-
 /* Login Box */
 .login-box {
   position: relative;
   z-index: 1;
   width: 90%;
+  max-height: 730px;
   max-width: 350px;
   padding: 25px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   color: white;
   text-align: center;
+  background: rgba(255, 255, 255, 0.08); /* slightly darker glass */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Heading */
@@ -52,7 +55,7 @@ body {
 
 .gender-group {
   display: flex;
-  gap: 20px; 
+  gap: 20px;
   justify-content: flex-start;
   align-items: center;
 }
@@ -64,7 +67,7 @@ body {
   font-size: larger;
   align-items: center;
 }
-input[type="radio"]{
+input[type="radio"] {
   transform: scale(1.5);
 }
 
@@ -73,13 +76,17 @@ input[type="radio"]{
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-
-  border: none;
-  outline: none;
+  outline: palegreen solid 1px;
   border-radius: 6px;
   font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
+input[type="radio"] {
+  outline: none;
+  box-shadow: none;
+}
 /* Button */
 .login-box button {
   width: 48%;
@@ -88,14 +95,20 @@ input[type="radio"]{
 
   border: none;
   border-radius: 6px;
-  background: hsla(230, 84%, 15%, 0.852);
   color: white;
   font-size: 15px;
   cursor: pointer;
+  background: hsla(230, 84%, 15%, 0.95);
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  transform: scale(1.03);
 }
 
 /* Text */
-.login-box a ,.login-box p{
+.login-box a,
+.login-box p {
   margin-top: 15px;
   font-size: 13px;
   text-decoration: none;
@@ -129,13 +142,13 @@ input[type="radio"]{
 .login-box span {
   cursor: pointer;
 }
-@media(min-width:414px){
-    .login-box{
-        max-width: 250px;
-    }
-    .login-box h2{
-        font-size: 22px;
-    }
+@media (min-width: 414px) {
+  .login-box {
+    max-width: 250px;
+  }
+  .login-box h2 {
+    font-size: 22px;
+  }
 }
 /* 🔥 Tablet */
 @media (min-width: 768px) {
