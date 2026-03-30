@@ -29,8 +29,9 @@ const StudentLogin = () => {
         // alert("Login Success");
 
         localStorage.setItem("rollNumber", rollNumber);
-        localStorage.setItem("fullName",result.fullName);
+        localStorage.setItem("fullName", data.fullName);
         navigate("/StudentDashboard",{state:{rollNumber:rollNumber}});
+        
       } else {
         alert(data);
       }

@@ -7,7 +7,7 @@ const WardenDashboard = () => {
   const location = useLocation();
 
   const [studentCount, setStudentCount] = useState(0);
-
+  const [complaints, setComplaints] = useState([]);
   const [notices, setNotices] = useState([]);
 
   const wardenId = localStorage.getItem("wardenId");
@@ -53,6 +53,16 @@ const WardenDashboard = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  useEffect(() => {
+  fetch("http://localhost:8080/student/getcomplaints")
+    .then(res => res.json())
+    .then(data => setComplaints(data))
+    .catch(err => console.error(err));
+}, []);
+
+  const pendingCount = complaints.filter(
+  c => c.status !== "Resolved"
+).length;
   return (
     <div className="warden-dashboard">
       <h1>Warden Dashboard</h1>
@@ -97,9 +107,9 @@ const WardenDashboard = () => {
           </div>
 
           <div className="warden-q-card">
-            <h4>Pending Complaints</h4>
-            <p>5</p>
-          </div>
+  <h4>Pending Complaints</h4>
+  <p>{pendingCount}</p>
+</div>
 
           <div className="warden-q-card">
             <h4>Resolved Today</h4>
