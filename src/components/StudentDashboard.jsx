@@ -7,7 +7,7 @@ import Complaints from './wardencomponents/Complaints';
 const StudentDashboard = () => {
   const [data, setData] = useState({});
   const location = useLocation();
-
+  const roll = localStorage.getItem("rollNumber");
   const [notices, setNotices] = useState([]);
   const [complaints,setComplaints] = useState([])
 
@@ -26,14 +26,12 @@ const StudentDashboard = () => {
       })
       .catch((err) => console.error(err));
 
-    fetch("http://localhost:8080/student/getcomplaints")
+    fetch(`http://localhost:8080/student/getcomplaints/${roll}`)
     .then(res=>res.json())
     .then(data=>{
-      setComplaints(data.slice(0,2))
+      setComplaints(data.slice(0, 2))
     })
   }, []);
-
-  const roll = localStorage.getItem("rollNumber");
 
   useEffect(() => {
     if (!roll) return;
