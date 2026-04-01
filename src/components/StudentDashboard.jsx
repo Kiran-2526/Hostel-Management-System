@@ -9,19 +9,28 @@ const StudentDashboard = () => {
   const location = useLocation();
 
   const [notices, setNotices] = useState([]);
+  const [complaints,setComplaints] = useState([])
 
   const handleLogout = () => {
-    localStorage.clear(); // 🔥 clear everything
+    localStorage.clear(); 
     window.location.href = "/";
   };
+
+  //complaints and notices
+
   useEffect(() => {
     fetch("http://localhost:8080/notices")
       .then((res) => res.json())
       .then((data) => {
-        // take only latest 3 notices
         setNotices(data.slice(0, 3));
       })
       .catch((err) => console.error(err));
+
+    fetch("http://localhost:8080/student/getcomplaints")
+    .then(res=>res.json())
+    .then(data=>{
+      setComplaints(data.slice(0,2))
+    })
   }, []);
 
   const roll = localStorage.getItem("rollNumber");
@@ -107,8 +116,13 @@ const StudentDashboard = () => {
         <div className="preview-section">
           <h3>My Complaints</h3>
           <ul>
-            <li>Fan not working - Pending</li>
-            <li>Light issue - Resolved</li>
+            {
+              complaints.length === 0 ? (
+                <li>No Complaints Yet</li>
+              ) : (
+                complaints.map((comp,idx) => <li key={idx}>{comp.title} - {comp.status}</li>)
+              )
+            }
           </ul>
 
           <NavLink to="/StudentDashboard/MyComplaints">View All →</NavLink>

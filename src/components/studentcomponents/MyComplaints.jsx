@@ -7,6 +7,7 @@ const MyComplaints = () => {
 
   const fullname = localStorage.getItem("fullName");
   const roomNumber = localStorage.getItem("roomNumber");
+  const roll = localStorage.getItem("rollNumber");
 
   const [data, setData] = useState({
     title: "",
@@ -14,13 +15,12 @@ const MyComplaints = () => {
     description: "",
     roomNumber: roomNumber || "",
     fullName: fullname || "",
+    rollNumber: roll
   });
 
   const [complaints, setComplaints] = useState([]);
 
-  // fetch profile
   useEffect(() => {
-    const roll = localStorage.getItem("rollNumber");
 
     if (!fullname || !roomNumber) {
       fetch(`http://localhost:8080/student/profile/${roll}`)
@@ -35,24 +35,17 @@ const MyComplaints = () => {
     }
   }, []);
 
-  // 🔥 fetch complaints (recent)
   useEffect(() => {
     const fetchComplaints = () => {
-      fetch("http://localhost:8080/student/getcomplaints")
+      fetch(`http://localhost:8080/student/getcomplaints/${roll}`)
         .then((res) => res.json())
         .then((result) => {
-  const filtered = result.filter(
-    (c) => c.fullName === fullname
-  );
-
-  setComplaints(filtered);
-})
+          setComplaints(result);
+        })
         .catch((err) => console.error(err));
     };
 
     fetchComplaints();
-
-    // 🔥 auto refresh every 3 seconds
     const interval = setInterval(fetchComplaints, 3000);
 
     return () => clearInterval(interval);
