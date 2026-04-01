@@ -10,6 +10,7 @@ const StudentDashboard = () => {
   const roll = localStorage.getItem("rollNumber");
   const [notices, setNotices] = useState([]);
   const [complaints,setComplaints] = useState([])
+  const [countComplaints,setCountComplaints] = useState(0);
 
   const handleLogout = () => {
     localStorage.clear(); 
@@ -27,10 +28,15 @@ const StudentDashboard = () => {
       .catch((err) => console.error(err));
 
     fetch(`http://localhost:8080/student/getcomplaints/${roll}`)
-    .then(res=>res.json())
-    .then(data=>{
-      setComplaints(data.slice(0, 2))
+      .then(res=>res.json())
+      .then(data=>{
+        setComplaints(data.slice(0, 2));
+        setCountComplaints(countComplaints++);
     })
+
+  //   fetch("http://localhost:8080/student/countcomplaints")
+  //   .then(res => res.text())
+  //   .then()
   }, []);
 
   useEffect(() => {
@@ -89,7 +95,11 @@ const StudentDashboard = () => {
 
           <div className="q-card">
             <h4>Pending Complaints</h4>
-            <p>2</p>
+            <p>
+              {
+                complaints.filter(c => c.status !== "resolved").length
+              }
+            </p>
           </div>
 
           <div className="q-card">
