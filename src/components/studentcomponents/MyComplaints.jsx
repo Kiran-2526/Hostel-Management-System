@@ -8,6 +8,7 @@ const MyComplaints = () => {
   const fullname = localStorage.getItem("fullName");
   const roomNumber = localStorage.getItem("roomNumber");
   const roll = localStorage.getItem("rollNumber");
+  const [search, setSearch] = useState("");
 
   const [data, setData] = useState({
     title: "",
@@ -17,6 +18,15 @@ const MyComplaints = () => {
     fullName: fullname || "",
     rollNumber: roll
   });
+
+  // const [filtered, setFiltered] = useState([]);
+
+  // const handleSearch = () => {
+  //   const result = complaints.filter((c) =>
+  //     c.title.toLowerCase().includes(search.toLowerCase())
+  //   );
+  //   setFiltered(result);
+  // };
 
   const [complaints, setComplaints] = useState([]);
 
@@ -113,6 +123,13 @@ const MyComplaints = () => {
       alert("Error deleting complaint");
     }
   };
+
+  const filteredComplaints = complaints.filter((c) =>
+    c.title.toLowerCase().includes(search.toLowerCase()) ||
+    c.description.toLowerCase().includes(search.toLowerCase()) ||
+    c.category.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <div className="complaints-page">
       <h1>Raise Complaints</h1>
@@ -162,7 +179,7 @@ const MyComplaints = () => {
       {/* 🔥 YOUR ORIGINAL SEARCH BAR (UNCHANGED) */}
       <div className="my-complaints">
         <div className="search-complaints">
-          <input type="text" placeholder="Search for your complaint" />
+          <input type="text" placeholder="Search for your complaint" onChange={(e) => setSearch(e.target.value)} value={search} />
           <select>
             <option>Select Complaint</option>
             <option value="plumbing">Plumbing</option>
@@ -170,42 +187,42 @@ const MyComplaints = () => {
             <option value="electrical">Electrical</option>
             <option value="others">Others</option>
           </select>
-          <button className="search-btn">Search</button>
         </div>
 
         {/* 🔥 RECENT COMPLAINTS */}
         <div className="complaints-list">
-          {/* <h3>Recent Complaints</h3> */}
 
-          {complaints.length === 0 ? (
-            <p>No complaints yet</p>
+          {(search ? filteredComplaints : complaints).length === 0 ? (
+            <p>No complaints found</p>
           ) : (
-            complaints.map((c) => (
-              <div key={c.cid} className="complaint-card">
-                {/* LEFT SIDE */}
-                <div className="complaint-info">
-                  <h4>{c.title}</h4>
-                  <p>{c.description}</p>
-                  <span>{c.category}</span>
+            [...(search ? filteredComplaints : complaints)]
+              .reverse()
+              .map((c) => (
+                <div key={c.cid} className="complaint-card">
 
-                  <small>
-                    {c.fullName} - Room {c.roomNumber}
-                  </small>
+                  <div className="complaint-info">
+                    <h4>{c.title}</h4>
+                    <p>{c.description}</p>
+                    <span>{c.category}</span>
 
-                  {/* 🔥 ADD THIS */}
-                  <span>Status: {c.status || "Pending"}</span>
+                    <small>
+                      {c.fullName} - Room {c.roomNumber}
+                    </small>
+
+                    <span>Status: {c.status || "Pending"}</span>
+                  </div>
+
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(c.cid)}
+                  >
+                    Delete
+                  </button>
+
                 </div>
-
-                {/* RIGHT SIDE */}
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(c.cid)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))
+              ))
           )}
+
         </div>
       </div>
     </div>

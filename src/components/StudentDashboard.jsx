@@ -9,11 +9,11 @@ const StudentDashboard = () => {
   const location = useLocation();
   const roll = localStorage.getItem("rollNumber");
   const [notices, setNotices] = useState([]);
-  const [complaints,setComplaints] = useState([])
-  const [countComplaints,setCountComplaints] = useState(0);
+  const [complaints, setComplaints] = useState([])
+  const [countComplaints, setCountComplaints] = useState(0);
 
   const handleLogout = () => {
-    localStorage.clear(); 
+    localStorage.clear();
     window.location.href = "/";
   };
 
@@ -28,15 +28,12 @@ const StudentDashboard = () => {
       .catch((err) => console.error(err));
 
     fetch(`http://localhost:8080/student/getcomplaints/${roll}`)
-      .then(res=>res.json())
-      .then(data=>{
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
         setComplaints(data.slice(0, 2));
-        setCountComplaints(countComplaints++);
-    })
+      })
 
-  //   fetch("http://localhost:8080/student/countcomplaints")
-  //   .then(res => res.text())
-  //   .then()
   }, []);
 
   useEffect(() => {
@@ -48,7 +45,7 @@ const StudentDashboard = () => {
           `http://localhost:8080/student/profile/${roll}`,
         );
         const result = await res.json();
-        console.log(result);
+        // console.log(result);
         setData(result);
       } catch (error) {
         alert("Student Not Found", error);
@@ -57,6 +54,11 @@ const StudentDashboard = () => {
 
     getProfile();
   }, [roll]);
+
+const pendingCount = complaints.filter(
+  c => c.rollNumber === roll && c.status !== "Resolved"
+).length;
+
 
   return (
     <div className="student-dashboard">
@@ -95,11 +97,7 @@ const StudentDashboard = () => {
 
           <div className="q-card">
             <h4>Pending Complaints</h4>
-            <p>
-              {
-                complaints.filter(c => c.status !== "resolved").length
-              }
-            </p>
+            <p>{pendingCount}</p>
           </div>
 
           <div className="q-card">
@@ -128,7 +126,7 @@ const StudentDashboard = () => {
               complaints.length === 0 ? (
                 <li>No Complaints Yet</li>
               ) : (
-                complaints.map((comp,idx) => <li key={idx}>{comp.title} - {comp.status}</li>)
+                complaints.map((comp, idx) => <li key={idx}>{comp.title} - {comp.status}</li>)
               )
             }
           </ul>
