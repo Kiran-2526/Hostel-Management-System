@@ -1,14 +1,18 @@
-/* PROFILE */
+/* ================= PROFILE CONTAINER ================= */
 .profile-container {
   padding: 20px;
   text-align: center;
   position: relative;
+  max-width: 1100px;
+  margin: auto;
 }
 
+/* ================= PROFILE CARD ================= */
 .profile-card {
   margin: 20px auto;
   padding: 20px;
-  width: 350px;
+  width: 100%;
+  max-width: 400px;
   background: #1e293b;
   border-radius: 12px;
   color: white;
@@ -19,21 +23,24 @@
 .profile-card p {
   margin: 10px 0;
 }
-.update-btn{
-  padding:8px 4px;
+
+/* ================= UPDATE BUTTON ================= */
+.update-btn {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 12px;
   border-radius: 8px;
-  margin-left: 6.5rem;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.5s;
-}
-.update-btn:active{
-  transform: scale(0.8);
+  transition: 0.3s;
 }
 
+.update-btn:active {
+  transform: scale(0.9);
+}
+
+/* ================= BACK BUTTON ================= */
 .profile-back-btn {
-  margin-top: 10px;
-  margin-bottom: 15px;
   padding: 8px 15px;
   background: #0f172a;
   color: white;
@@ -42,15 +49,15 @@
   cursor: pointer;
   transition: 0.3s;
   position: absolute;
-  top:10px;
-  left: 40px;
+  top: 10px;
+  left: 20px;
 }
 
 .profile-back-btn:hover {
   background: #1e293b;
 }
 
-/* FORM INPUTS */
+/* ================= FORM INPUTS ================= */
 .profile-card input,
 .profile-card select {
   width: 100%;
@@ -71,19 +78,21 @@
   box-shadow: 0 0 5px #38bdf8;
 }
 
-/* BUTTON CONTAINER */
-.profile-card .button-group {
+/* ================= BUTTON GROUP ================= */
+.button-group {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   margin-top: 15px;
 }
 
-/* SAVE BUTTON */
+/* ================= SAVE BUTTON ================= */
 .save-btn {
+  flex: 1;
   background-color: #22c55e;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 10px;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
@@ -93,13 +102,13 @@
   background-color: #16a34a;
 }
 
-/* CANCEL BUTTON */
+/* ================= CANCEL BUTTON ================= */
 .cancel-btn {
+  flex: 1;
   background-color: #ef4444;
   color: white;
   border: none;
-  margin-left: 10px;
-  padding: 8px 15px;
+  padding: 10px;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
@@ -109,40 +118,146 @@
   background-color: #dc2626;
 }
 
-/* BUTTON CLICK EFFECT */
+/* ================= CLICK EFFECT ================= */
 .save-btn:active,
 .cancel-btn:active {
   transform: scale(0.9);
 }
 
+/* ================= PERMISSION SECTION (STUDENT) ================= */
 .permission-section {
-  margin-top: 20px;
+  margin-top: 25px;
   background: #1e293b;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .perm-btn {
-  background: orange;
+  background: #f59e0b;
+  color: black;
   padding: 10px;
+  width: 100%;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
 }
 
+.perm-btn:hover {
+  background: #d97706;
+}
+
+/* STATUS TEXT */
+.permission-section p {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ================= WARDEN PERMISSION LIST ================= */
 .permission-list {
-  margin-top: 20px;
+  margin-top: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* CARD */
 .perm-card {
   background: #0f172a;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: 0.3s;
 }
 
-@media (max-width: 600px){
-  .profile-card{
-    width: 200px;
+.perm-card:hover {
+  transform: translateY(-3px);
+}
+
+/* BUTTONS INSIDE CARD */
+.perm-card button {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* APPROVE */
+.perm-card button:first-of-type {
+  background: #22c55e;
+  color: white;
+}
+
+.perm-card button:first-of-type:hover {
+  background: #16a34a;
+}
+
+/* RETURN */
+.perm-card button:last-of-type {
+  background: #3b82f6;
+  color: white;
+}
+
+.perm-card button:last-of-type:hover {
+  background: #2563eb;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  .profile-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .permission-section {
+    width: 90%;
+  }
+
+  .permission-list {
+    width: 95%;
+  }
+
+  .perm-card {
+    padding: 12px;
+  }
+
+  .profile-back-btn {
+    left: 10px;
+  }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 900px) {
+  .profile-card {
+    max-width: 350px;
+  }
+
+  .permission-list {
+    max-width: 600px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 901px) {
+  .profile-card {
+    max-width: 400px;
+  }
+
+  .permission-list {
+    max-width: 700px;
   }
 }

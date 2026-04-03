@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./../../styles/profile.css";
 import { useNavigate } from "react-router-dom";
+
 const Profile = () => {
   const [data, setData] = useState({});
   const [edit, setEdit] = useState(false);
   const [permissionStatus, setPermissionStatus] = useState("Not Requested");
+
   const navigate = useNavigate();
   const roll = localStorage.getItem("rollNumber");
 
@@ -17,11 +19,32 @@ const Profile = () => {
         setData(result);
         localStorage.setItem("roomNumber", result.roomNumber);
       } catch (error) {
-        alert("Failed to load profile", error);
+        alert("Failed to load profile",error);
       }
     };
 
     if (roll) getProfile();
+  }, [roll]);
+
+  // 🔥 FETCH PERMISSION STATUS (ADDED)
+  useEffect(() => {
+    const fetchPermission = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:8080/permission/student/${roll}`
+        );
+        const result = await res.json();
+
+        if (result.length > 0) {
+          const latest = result[result.length - 1];
+          setPermissionStatus(latest.status);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    if (roll) fetchPermission();
   }, [roll]);
 
   // Handle input
@@ -32,8 +55,6 @@ const Profile = () => {
   // Update profile
   const handleUpdate = async () => {
     try {
-      console.log("Sending:", data);
-
       const res = await fetch(`http://localhost:8080/student/profile/update`, {
         method: "PUT",
         headers: {
@@ -54,10 +75,10 @@ const Profile = () => {
     }
   };
 
-  // Permission Request
+  // 🔥 Permission Request (FIXED URL + REMOVED STATUS)
   const handlePermissionRequest = async () => {
     try {
-      const res = await fetch("http://localhost:8080/student/request-permission", {
+      const res = await fetch("http://localhost:8080/permission/request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -66,8 +87,7 @@ const Profile = () => {
           rollNumber: data.rollNumber,
           fullName: data.fullName,
           roomNumber: data.roomNumber,
-          year: data.year,
-          status: "Pending"
+          year: data.year
         })
       });
 
@@ -125,6 +145,7 @@ const Profile = () => {
         </div>
       )}
 
+      {/* 🔥 PERMISSION SECTION */}
       <div className="permission-section">
         <h3>Outing Permission</h3>
 

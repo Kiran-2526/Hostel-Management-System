@@ -79,7 +79,7 @@ const MyComplaints = () => {
       const result = await res.json();
 
       if (res.ok) {
-        alert("Complaint Posted Successfully");
+        // alert("Complaint Posted Successfully");
 
         // refresh complaints list
         setComplaints((prev) => [result, ...prev]);
