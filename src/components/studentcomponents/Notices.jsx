@@ -6,7 +6,6 @@ const Notices = () => {
   const [notices, setNotices] = useState([]);
   const navigate = useNavigate();
 
-  // ✅ Fetch notices from backend
   const fetchNotices = () => {
     fetch("http://localhost:8080/notices")
       .then((res) => res.json())
@@ -27,9 +26,8 @@ const Notices = () => {
       >
         ← Back
       </button>
-      <h2>📢 Notices / Announcements</h2>
+      <h2>Notices / Announcements</h2>
 
-      {/* Notices List */}
       <div className="warden-notice-list">
         {notices.length === 0 ? (
           <p className="warden-empty">No notices available</p>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [data, setData] = useState({});
   const [edit, setEdit] = useState(false);
+  const [permissionStatus, setPermissionStatus] = useState("Not Requested");
   const navigate = useNavigate();
   const roll = localStorage.getItem("rollNumber");
 
@@ -14,9 +15,9 @@ const Profile = () => {
         const res = await fetch(`http://localhost:8080/student/profile/${roll}`);
         const result = await res.json();
         setData(result);
-        localStorage.setItem("roomNumber",result.roomNumber);
+        localStorage.setItem("roomNumber", result.roomNumber);
       } catch (error) {
-        alert("Failed to load profile",error);
+        alert("Failed to load profile", error);
       }
     };
 
@@ -53,10 +54,36 @@ const Profile = () => {
     }
   };
 
+  // Permission Request
+  const handlePermissionRequest = async () => {
+    try {
+      const res = await fetch("http://localhost:8080/student/request-permission", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          rollNumber: data.rollNumber,
+          fullName: data.fullName,
+          roomNumber: data.roomNumber,
+          year: data.year,
+          status: "Pending"
+        })
+      });
+
+      if (res.ok) {
+        alert("Permission Requested");
+        setPermissionStatus("Pending");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="profile-container">
 
-      <button 
+      <button
         className="profile-back-btn"
         onClick={() => navigate("/StudentDashboard")}
       >
@@ -97,6 +124,17 @@ const Profile = () => {
           <button onClick={() => setEdit(false)} className="cancel-btn">Cancel</button>
         </div>
       )}
+
+      <div className="permission-section">
+        <h3>Outing Permission</h3>
+
+        <button onClick={handlePermissionRequest} className="perm-btn">
+          Request Permission
+        </button>
+
+        <p>Status: {permissionStatus}</p>
+      </div>
+
     </div>
   );
 };

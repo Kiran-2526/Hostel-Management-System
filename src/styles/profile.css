@@ -115,6 +115,32 @@
   transform: scale(0.9);
 }
 
+.permission-section {
+  margin-top: 20px;
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.perm-btn {
+  background: orange;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.permission-list {
+  margin-top: 20px;
+}
+
+.perm-card {
+  background: #0f172a;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
 @media (max-width: 600px){
   .profile-card{
     width: 200px;

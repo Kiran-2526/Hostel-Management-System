@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 const WardenProfile = () => {
   const [data, setData] = useState({});
   const [edit, setEdit] = useState(false);
+  const [permissions, setPermissions] = useState([]);
   const navigate = useNavigate();
   const roll = localStorage.getItem("wardenId");
+  const stdId = localStorage.getItem("rollNumber");
 
   // Fetch profile
   useEffect(() => {
@@ -16,12 +18,19 @@ const WardenProfile = () => {
         const result = await res.json();
         setData(result);
       } catch (error) {
-        alert("Failed to load profile",error);
+        alert("Failed to load profile", error);
       }
     };
 
     if (roll) getProfile();
   }, [roll]);
+
+  // get-permission
+  useEffect(() => {
+    fetch(`http://localhost:8080/warden/get-permissions`)
+      .then(res => res.json())
+      .then(data => setPermissions(data));
+  }, []);
 
   // Handle input
   const handleChange = (e) => {
@@ -53,10 +62,26 @@ const WardenProfile = () => {
     }
   };
 
+  const handleApprove = async (id) => {
+    await fetch(`http://localhost:8080/warden/approve/${id}`, {
+      method: "PUT"
+    });
+
+    alert("Approved");
+  };
+
+  const handleReturn = async (id) => {
+    await fetch(`http://localhost:8080/warden/return/${id}`, {
+      method: "PUT"
+    });
+
+    alert("Marked as Returned");
+  };
+  
   return (
     <div className="profile-container">
 
-      <button 
+      <button
         className="profile-back-btn"
         onClick={() => navigate("/WardenDashboard")}
       >
@@ -92,6 +117,27 @@ const WardenProfile = () => {
           <button onClick={() => setEdit(false)} className="cancel-btn">Cancel</button>
         </div>
       )}
+
+      <div className="permission-list">
+        <h3>Permission Requests</h3>
+
+        {permissions.map((p) => (
+          <div key={p.id} className="perm-card">
+            <p>{p.fullName} (Room {p.roomNumber})</p>
+            <p>Year: {p.year}</p>
+            <p>Status: {p.status}</p>
+
+            {p.status === "Pending" && (
+              <button onClick={() => handleApprove(p.id)}>Approve</button>
+            )}
+
+            {p.status === "Approved" && (
+              <button onClick={() => handleReturn(p.id)}>Returned</button>
+            )}
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };

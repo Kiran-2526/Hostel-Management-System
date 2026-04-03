@@ -113,7 +113,6 @@ const MyComplaints = () => {
       if (res.ok) {
         alert("Deleted Successfully");
 
-        // 🔥 update UI instantly
         setComplaints((prev) => prev.filter((c) => c.cid !== id));
       } else {
         alert(result);
@@ -189,7 +188,6 @@ const MyComplaints = () => {
           </select>
         </div>
 
-        {/* 🔥 RECENT COMPLAINTS */}
         <div className="complaints-list">
 
           {(search ? filteredComplaints : complaints).length === 0 ? (
